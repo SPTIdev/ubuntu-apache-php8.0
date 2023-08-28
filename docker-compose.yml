@@ -1,0 +1,21 @@
+version: "3.1"
+services:
+    www:
+        build: .
+#         ports:
+#             - "4433:443"
+#         volumes:
+#             - ./www/:/var/www/
+#             - ./apache2/sites-enabled:/etc/apache2/sites-enabled/
+#             - ./apache2/log:/var/log/apache2/
+#             - /etc/letsencrypt/:/etc/letsencrypt/
+#         networks:
+#             static-network:
+#                 ipv4_address: 172.10.0.2
+# networks:
+#     static-network:
+#         ipam:
+#             config:
+#                 - subnet: 172.10.0.0/16
+#                 # - gateway: "172.21.0.1"
+
