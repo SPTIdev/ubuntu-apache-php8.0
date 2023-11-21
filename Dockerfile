@@ -43,16 +43,20 @@ RUN docker-php-ext-install mysqli pdo_mysql zip bcmath dba dom pdo pdo_dblib soa
 RUN apt-get update && apt-get install -y \
     gnupg \
     gnupg2 \
+    libcurl \
     curl \
     unzip \
     libpng-dev \
     unixodbc-dev \
     libc-client-dev libkrb5-dev
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql zip xml \
-    && pecl install sqlsrv pdo_sqlsrv \
-    && docker-php-ext-enable sqlsrv pdo_sqlsrv \
-    && a2enmod rewrite
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql zip xml curl intl
+
+RUN pecl install sqlsrv pdo_sqlsrv
+
+RUN docker-php-ext-enable sqlsrv pdo_sqlsrv curl intl
+
+RUN a2enmod rewrite
 
 # Instalar a extensão IMAP
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
